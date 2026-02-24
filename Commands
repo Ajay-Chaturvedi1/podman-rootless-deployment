@@ -1,0 +1,24 @@
+# commands:
+
+# 1. Podman version
+podman --version
+
+# 2. Rootless confirm karo
+podman info | grep -i rootless
+
+# 3. Running containers
+podman ps
+podman pod ps
+
+# 4. Systemd service status
+systemctl --user status pod-myapp-pod.service
+
+# 5. SELinux enforcing
+getenforce
+
+# 6. App working in browser
+curl http://localhost:8080
+
+# 7. Non-root user confirm
+whoami   # appuser dikhna chahiye
+id       # uid=1001 dikhna chahiye
