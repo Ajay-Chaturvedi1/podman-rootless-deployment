@@ -1,0 +1,51 @@
+## GOLDEN RULE (MOST IMPORTANT)
+- Never answer like a book. Always answer like someone who has done it in production.
+
+## IMPACT STRUCTURE (Use this every time)
+1. one line clarity (definition)
+2. How you used it in real environments
+3. Why it matters in production
+
+## QUESTIONS:-
+---
+### 1. Explain Podman and how it differs from Docker
+Answer: Podman is daemonless, OCI-compliant container engine designed for secure, enterprise Linux environments.
+In my setups on RHEL, Podman runs containers without a central daemon, which removes a single point of failure and improves security.
+A key advantage I've used in production is rootless containers, which significantly reduces attack surface comapared to Docker.
+---
+### 2. What "Daemonless" Means and what means by OCI-compliant.
+Answer: In traditional container engines like Docker, a central background process (the "daemon") runs as root and manages all containers. In Podman, there is no central daemon. 
+
+Direct Interaction: When you run a command, Podman directly interacts with the operating system to start the container as a regular child process. 
+
+No Single Point of Failure: If a central daemon crashes or is compromised, all containers might go down or be exposed. Without a daemon, each container is independent. 
+
+Rootless by Default: Because it doesn't need a privileged background service, regular users can run containers without needing "sudo" or admin rights. 
+
+2. What "OCI-Compliant" Means
+The Open Container Initiative (OCI) is an industry standard that defines how containers should be built and run so they work across different platforms. 
+
+Interoperability: Being OCI-compliant means Podman can run any image built by other tools (like Docker) and vice versa.
+Standardized Runtimes: Podman uses standard runtimes like runc or crun to interface with the Linux kernel.
+How to Explain This to an Interviewer
+When asked about Podman’s architecture, you can use this structured response:
+"The core difference between Podman and Docker lies in its architecture. While Docker uses a client-server model with a persistent root daemon, Podman is daemonless. This means Podman launches containers as direct child processes of the user's shell. This design is more secure because it removes the central daemon as a single point of failure and allows for rootless operation, where users can run containers without administrative privileges. 
+Additionally, Podman is OCI-compliant, meaning it follows industry standards for container images and runtimes. Because of this, it is highly compatible with the existing Docker ecosystem—you can pull Docker images and run them in Podman without any changes to the image itself."
+
+---
+### 3. What does rootless Podman mean? What kernel features does it depend on?
+Rootless Podman allows containers to run without root privileges, meaning even if a container is compromised, the attacker doesn’t get root access on the host.
+It depends on Linux kernel features like user namespaces, cgroups v2, slirp4netns for networking, and fuse-overlayfs for storage.
+I’ve used rootless Podman in environments where security and compliance teams restricted root-level runtimes.
+---
+### 4. Explain Podman architecture. How is it fundamentally different from Docker?
+Podman follows a daemonless architecture and is fully OCI-compliant.
+Unlike Docker, which relies on a long-running central daemon (dockerd), Podman runs containers as child processes of the Podman command itself.
+This removes a single point of failure, improves security, and aligns better with enterprise Linux and systemd-based environments.
+In production, this architecture helps with better stability, easier troubleshooting, and tighter security controls, especially on RHEL systems
+Key Differentiator (say confidently)
+Docker → client-server, daemon-based
+Podman → daemonless, fork-exec model
+
+---
+### 5. 
