@@ -5,31 +5,31 @@
 ![SELinux](https://img.shields.io/badge/SELinux-Enforcing-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
-## 📌 Overview
+##  Overview
 
 This project demonstrates a **production-grade rootless container deployment** using Podman on RHEL 9, eliminating the need for Docker daemon and root privileges — improving security in enterprise Linux environments.
 
-## 🏗️ Architecture
+##  Architecture
 ```
 RHEL 9 Server
 │
 └── appuser (non-root)
     │
     ├── 🦭 Podman Pod: myapp-pod
-    │   ├── 🌐 webapp container  (port 8080)
-    │   └── 🗄️  postgres container (port 5432)
+    │   ├──  webapp container  (port 8080)
+    │   └──   postgres container (port 5432)
     │
-    ├── ⚙️  systemd (user-level services)
+    ├──   systemd (user-level services)
     │   └── Auto-start | Auto-restart | Monitoring
     │
-    ├── 🔒 SELinux (Enforcing mode)
+    ├──  SELinux (Enforcing mode)
     │   └── Volume context labels (:Z)
     │
-    └── 👤 loginctl linger
+    └──  loginctl linger
         └── Runs containers even after logout
 ```
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |------|---------|
@@ -40,7 +40,7 @@ RHEL 9 Server
 | **systemd** | Service management & auto-restart |
 | **SELinux** | Mandatory access control |
 
-## ✅ Key Features
+##  Key Features
 
 - **Rootless execution** — No root privileges required
 - **No Docker daemon** — Podman is daemonless
@@ -49,7 +49,7 @@ RHEL 9 Server
 - **Multi-container pods** — webapp + postgres in same pod
 - **Linger enabled** — Containers survive user logout
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - RHEL 8 or 9 server
@@ -81,11 +81,11 @@ curl http://localhost:8080
 systemctl --user status pod-myapp-pod.service
 ```
 
-## 📸 Screenshots
+##  Screenshots
 
 > *(Add your real terminal screenshots here)*
 
-## 🔒 Security Highlights
+##  Security Highlights
 
 - Containers run as UID 1001 (non-root)
 - SELinux Z-labels on all volume mounts
@@ -93,7 +93,7 @@ systemctl --user status pod-myapp-pod.service
 - No Docker socket exposure
 - Network isolation via Podman CNI
 
-## 📂 Project Structure
+##  Project Structure
 ```
 podman-rootless-deployment/
 ├── Containerfile          # Custom image
@@ -106,8 +106,5 @@ podman-rootless-deployment/
 └── docs/                  # Documentation
 ```
 
-## 👤 Author
-
-**Your Name**
-- LinkedIn: [your-linkedin]
-- Email: your@email.com
+## Author
+Ajay Chaturvedi
