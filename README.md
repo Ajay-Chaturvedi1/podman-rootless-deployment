@@ -1,4 +1,4 @@
-# 🦭 Podman Rootless Container Deployment on RHEL
+#  Podman Rootless Container Deployment on RHEL
 
 ![RHEL](https://img.shields.io/badge/RHEL-9-red?style=flat-square&logo=redhat)
 ![Podman](https://img.shields.io/badge/Podman-4.x-purple?style=flat-square)
