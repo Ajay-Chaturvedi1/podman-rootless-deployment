@@ -83,7 +83,7 @@ systemctl --user status pod-myapp-pod.service
 
 ##  Screenshots
 
-> <img width="748" height="124" alt="image" src="https://github.com/user-attachments/assets/74291fb2-450e-40e7-820b-628032d98672" />
+ <img width="748" height="124" alt="image" src="https://github.com/user-attachments/assets/74291fb2-450e-40e7-820b-628032d98672" />
 
 
 ##  Security Highlights
